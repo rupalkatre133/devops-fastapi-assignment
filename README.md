@@ -8,13 +8,14 @@ This project demonstrates deployment of a FastAPI application using Docker, Dock
 
 ## Architecture
 
-Internet
-   |
- Nginx
-   |
- FastAPI
- /      \
-Redis  PostgreSQL
+                Internet
+                    |
+                 Nginx
+                    |
+                 FastAPI
+                /       \
+               /         \
+          PostgreSQL    Redis
 
 ---
 
@@ -80,7 +81,7 @@ http://localhost:8000/health
 
 ---
 
-## CI/CD
+## CI/CD Pipeline
 
 GitHub Actions automatically builds the Docker image whenever code is pushed to the main branch.
 
@@ -88,10 +89,10 @@ GitHub Actions automatically builds the Docker image whenever code is pushed to 
 
 ## Security Measures
 
-- Environment variables for configuration
+- Environment variables used for configuration
 - Nginx reverse proxy
-- Containerized services
-- SSH key based server access
+- Docker container isolation
+- SSH key authentication for production
 - Firewall configuration using UFW
 
 ---
@@ -114,9 +115,26 @@ For production deployment, SSL can be implemented using Let's Encrypt and Certbo
 
 ---
 
+## Deployment
+
+The application has been tested locally using Docker Compose.
+
+For production deployment:
+
+1. Launch an Ubuntu server.
+2. Install Docker and Docker Compose.
+3. Clone the repository.
+4. Run:
+
+docker compose up -d
+
+5. Expose ports 80 and 443.
+
+---
+
 ## Future Improvements
 
 - Prometheus Monitoring
 - Grafana Dashboards
-- Automated EC2 Deployment
+- Automated AWS Deployment
 - SSL Automation
